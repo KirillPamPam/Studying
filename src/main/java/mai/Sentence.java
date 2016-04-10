@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,12 +43,12 @@ public class Sentence {
         return text;
     }
 
-    public List<String> searchWords(int length) {
-        List<String> wordsList = new ArrayList<>();
+    public Set<String> searchWords(int length) {
+        Set<String> wordsList = new HashSet<>();
         for (String sentence: searchSentences()) {
             String[] words = sentence.split("[,\\s;:-]");
             for (String word: words) {
-                if((word.length() == length) && !wordsList.contains(word)) {
+                if(word.length() == length) {
                     wordsList.add(word);
                 }
             }
